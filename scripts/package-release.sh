@@ -6,26 +6,28 @@ DIST_DIR="${DIST_DIR:-$PROJECT_DIR/dist}"
 SIGNING_IDENTITY="${SIGNING_IDENTITY:-}"
 NOTARY_PROFILE="${NOTARY_PROFILE:-}"
 
-if [[ -z "$SIGNING_IDENTITY" ]]; then
-  echo "error: set SIGNING_IDENTITY to a Developer ID Application certificate" >&2
-  exit 1
-fi
-
 mkdir -p "$DIST_DIR"
 ARCHS="${ARCHS:-arm64 x86_64}" \
-SIGNING_IDENTITY="$SIGNING_IDENTITY" \
+SIGNING_IDENTITY="${SIGNING_IDENTITY:--}" \
 "$PROJECT_DIR/build.sh" "$DIST_DIR"
 
 APP="$DIST_DIR/Heads Up.app"
-ARCHIVE="$DIST_DIR/Heads-Up.zip"
-rm -f "$ARCHIVE"
-ditto -c -k --keepParent "$APP" "$ARCHIVE"
+DMG="$DIST_DIR/Heads-Up.dmg"
+DMG_ROOT="$(mktemp -d)"
+trap 'rm -rf "$DMG_ROOT"' EXIT
+
+cp -R "$APP" "$DMG_ROOT/Heads Up.app"
+ln -s /Applications "$DMG_ROOT/Applications"
+rm -f "$DMG"
+hdiutil create -volname "Heads Up" -srcfolder "$DMG_ROOT" -ov -format UDZO "$DMG"
 
 if [[ -n "$NOTARY_PROFILE" ]]; then
-  xcrun notarytool submit "$ARCHIVE" --keychain-profile "$NOTARY_PROFILE" --wait
-  xcrun stapler staple "$APP"
-  rm -f "$ARCHIVE"
-  ditto -c -k --keepParent "$APP" "$ARCHIVE"
+  if [[ -z "$SIGNING_IDENTITY" ]]; then
+    echo "error: notarization requires SIGNING_IDENTITY" >&2
+    exit 1
+  fi
+  xcrun notarytool submit "$DMG" --keychain-profile "$NOTARY_PROFILE" --wait
+  xcrun stapler staple "$DMG"
 fi
 
-echo "✅ Packaged $ARCHIVE"
+echo "✅ Packaged $DMG"

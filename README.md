@@ -8,6 +8,14 @@ Heads Up reads Apple Calendar and shows a full-screen **Join**, **Snooze**, or *
 meeting is about to begin. It supports calendar and attendance filters, recognized video-meeting
 links, multiple displays, sound, pause, and launch at login.
 
+## Install
+
+Download `Heads-Up.dmg` from the latest release, open it, and drag Heads Up into Applications.
+
+The current alpha is not signed. The first time you launch it, macOS will block it. After trying to
+open it, go to **System Settings → Privacy & Security**, click **Open Anyway**, and confirm. Then
+grant Calendar access when Heads Up asks.
+
 ## Build
 
 Requires macOS 14 and Xcode or the Xcode Command Line Tools.
