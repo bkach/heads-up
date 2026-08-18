@@ -16,6 +16,16 @@ The current alpha is not signed. The first time you launch it, macOS will block 
 open it, go to **System Settings → Privacy & Security**, click **Open Anyway**, and confirm. Then
 grant Calendar access when Heads Up asks.
 
+## Calendar setup
+
+Heads Up reads calendars that are already available in Apple Calendar:
+
+1. Open **System Settings → Internet Accounts**, add your preferred calendar account, and enable
+   **Calendars** for it.
+2. Open **Calendar → Settings → Accounts**, select that account, and set **Refresh Calendars** to
+   **Every minute**.
+3. Make sure the calendars you want Heads Up to watch are enabled in Apple Calendar's sidebar.
+
 ## Build
 
 Requires macOS 14 and Xcode or the Xcode Command Line Tools.
