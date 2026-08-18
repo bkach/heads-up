@@ -10,7 +10,8 @@ links, multiple displays, sound, pause, and launch at login.
 
 ## Install
 
-Download `Heads-Up.dmg` from the latest release, open it, and drag Heads Up into Applications.
+[Download Heads Up](https://github.com/bkach/heads-up/releases/download/v0.3.0-alpha.1/Heads-Up.dmg),
+open the DMG, and drag Heads Up into Applications.
 
 The current alpha is not signed. The first time you launch it, macOS will block it. After trying to
 open it, go to **System Settings → Privacy & Security**, click **Open Anyway**, and confirm. Then
