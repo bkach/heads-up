@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDisplayName</key>
+    <string>Heads Up</string>
+    <key>CFBundleExecutable</key>
+    <string>HeadsUp</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.boriskachscovsky.headsup</string>
+    <key>CFBundleName</key>
+    <string>Heads Up</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+	<string>0.3.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>NSCalendarsFullAccessUsageDescription</key>
+    <string>Heads Up reads upcoming events so it can show meeting alerts at the right time.</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>Heads Up reads upcoming events so it can show meeting alerts at the right time.</string>
+    <key>NSHumanReadableCopyright</key>
+    <string>Copyright © 2026 Boris Kachscovsky.</string>
+</dict>
+</plist>
